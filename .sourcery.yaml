@@ -1,0 +1,39 @@
+ignore: []
+
+rule_settings:
+  enable: [default]
+#  disable:
+#  - aug-assign
+  rule_types:
+    - refactoring
+    - suggestion
+    - comment
+  python_version: '3.9'
+
+rules:
+  - id: raise-not-implemented
+    description: NotImplemented is not an Exception, raise NotImplementedError instead
+    pattern: raise NotImplemented
+    replacement: raise NotImplementedError
+  - id: remove-open-r
+    description: Files are opened in read mode `r` by default
+    pattern: open(${file}, "r")
+    replacement: open(${file})
+
+metrics:
+  quality_threshold: 25.0
+
+github:
+  labels: []
+  ignore_labels:
+    - sourcery-ignore
+  request_review: author
+  sourcery_branch: sourcery/{base_branch}
+
+clone_detection:
+  min_lines: 3
+  min_duplicates: 2
+  identical_clones_only: false
+
+proxy:
+  no_ssl_verify: false
