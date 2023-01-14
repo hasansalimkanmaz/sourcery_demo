@@ -10,7 +10,7 @@ def make_squares(n: int) -> list[int]:
 my_list_0 = list(range(10))
 
 
-def change_hats(hats: list = None):
+def change_hats(hats=None):
     if hats is None:
         hats = []
     change(hats)
