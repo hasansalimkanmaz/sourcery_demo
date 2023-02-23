@@ -1,5 +1,6 @@
 import random
 from helper import fetch_tracks, Playlist, change, shout
+from typing import Any
 
 
 def make_squares(n: int) -> list[int]:
@@ -88,6 +89,17 @@ def create_playlist(starting_tracks = []):
 def shout_about_bowlers(hats: list[str]) -> None:
     if any(hat == "bowler" for hat in hats):
         shout("I have a bowler hat!")
+
+
+def resolve_configs(
+    default_config: dict[str, Any],
+    user_config: dict[str, Any],
+    project_config: dict[str, Any],
+):
+    config = default_config.copy()
+    config.update(user_config)
+    config.update(project_config)
+    return config
 
 
 # Custom Rules

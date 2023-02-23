@@ -1,6 +1,6 @@
 import random
 from helper import fetch_tracks, Playlist, change, shout
-
+from typing import Any
 
 def make_squares(n: int) -> list[int]:
     """Returns a list of square numbers up to `n ** 2`."""
@@ -71,6 +71,14 @@ def create_playlist(starting_tracks=None):
 def shout_about_bowlers(hats: list[str]) -> None:
     if "bowler" in hats:
         shout("I have a bowler hat!")
+
+
+def resolve_configs(
+    default_config: dict[str, Any],
+    user_config: dict[str, Any],
+    project_config: dict[str, Any],
+):
+    return default_config | user_config | project_config
 
 
 # Custom Rules
