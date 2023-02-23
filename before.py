@@ -1,5 +1,5 @@
 import random
-from helper import fetch_tracks, Playlist, change, shout
+from helper import fetch_tracks, Playlist, change, shout, InvalidCredentialsError
 from typing import Any
 
 
@@ -13,10 +13,6 @@ def make_squares(n: int) -> list[int]:
 
 
 my_list_0 = [i for i in range(10)]
-
-
-def change_hats(hats: list = []):
-    change(hats)
 
 
 def assign_if_statement(a, b):
@@ -34,14 +30,6 @@ for i in my_list_1:
         my_list_2.append(i)
     else:
         continue
-
-
-def f(a, b):
-    if a > b:
-        val = 42
-    else:
-        val = 0
-    return val
 
 
 hats_i_own = {}
@@ -65,27 +53,6 @@ last_name = "Kanmaz"
 print("Good %s, %s %s" % (time_of_day, first_name, last_name))
 
 
-def create_playlist(starting_tracks = []):
-    tracks_all = list(fetch_tracks())
-    track_list = starting_tracks
-    duration_seconds_remaining = 1800
-
-    while duration_seconds_remaining > 0:
-        tracks_which_fit = []
-        for track in tracks_all:
-            if track.duration_seconds < duration_seconds_remaining:
-                tracks_which_fit.append(track)
-        if len(tracks_which_fit) == 0:
-            break
-        track_selected = random.choice(tracks_which_fit)
-        if track_selected in track_list:
-            continue
-        duration_seconds_remaining = duration_seconds_remaining - track_selected.duration_seconds
-        track_list.append(track_selected)
-
-    return Playlist(track_list)
-
-
 def shout_about_bowlers(hats: list[str]) -> None:
     if any(hat == "bowler" for hat in hats):
         shout("I have a bowler hat!")
@@ -100,6 +67,24 @@ def resolve_configs(
     config.update(user_config)
     config.update(project_config)
     return config
+
+
+def testConnection(db, credentials):
+    try:
+        try:
+            db.connect(credentials)
+        except InvalidCredentialsError:
+            return "Check your credentials"
+        except ConnectionError:
+            return "Error while trying to connect"
+    finally:
+        print("Connection attempt finished")
+    return "Connection Successful"
+
+
+def put_on_hat_if_needed(is_raining: bool):
+    if is_raining == True:
+        print("Put on hat")
 
 
 # Custom Rules

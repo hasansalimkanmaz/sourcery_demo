@@ -23,3 +23,7 @@ def change(hat: list):
 
 def shout(message: str):
     print(message)
+
+
+class InvalidCredentialsError(Exception):
+    pass
