@@ -1,5 +1,4 @@
-import random
-from helper import fetch_tracks, Playlist, change, shout, InvalidCredentialsError
+from helper import shout, InvalidCredentialsError, Scale
 from typing import Any
 
 def make_squares(n: int) -> list[int]:
@@ -63,6 +62,24 @@ def put_on_hat_if_needed(is_raining: bool):
     if is_raining:
         print("Put on hat")
 
+
+DEFAULT_SPEED = 3
+HORIZONTAL = True
+DEFAULT_FORCE = 10
+def extraction_example():
+    speed_slider = Scale(
+        "parent", from_=1, to=10, orient=HORIZONTAL, label="Speed"
+    )
+    speed_slider.pack()
+    speed_slider.set(DEFAULT_SPEED)
+    speed_slider.configure(background="white")
+
+    force_slider = Scale(
+        "parent", from_=1, to=10, orient=HORIZONTAL, label="Force"
+    )
+    force_slider.pack()
+    force_slider.set(DEFAULT_FORCE)
+    force_slider.configure(background="white")
 
 # Custom Rules
 class ExampleBaseClass:
