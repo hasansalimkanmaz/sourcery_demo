@@ -67,19 +67,16 @@ DEFAULT_SPEED = 3
 HORIZONTAL = True
 DEFAULT_FORCE = 10
 def extraction_example():
-    speed_slider = Scale(
-        "parent", from_=1, to=10, orient=HORIZONTAL, label="Speed"
-    )
-    speed_slider.pack()
-    speed_slider.set(DEFAULT_SPEED)
-    speed_slider.configure(background="white")
+    _extracted_from_extraction_example_2("Speed", DEFAULT_SPEED)
+    _extracted_from_extraction_example_2("Force", DEFAULT_FORCE)
 
-    force_slider = Scale(
-        "parent", from_=1, to=10, orient=HORIZONTAL, label="Force"
-    )
-    force_slider.pack()
-    force_slider.set(DEFAULT_FORCE)
-    force_slider.configure(background="white")
+
+# TODO Rename this here and in `extraction_example`
+def _extracted_from_extraction_example_2(label, arg1):
+    speed_slider = Scale("parent", from_=1, to=10, orient=HORIZONTAL, label=label)
+    speed_slider.pack()
+    speed_slider.set(arg1)
+    speed_slider.configure(background="white")
 
 # Custom Rules
 class ExampleBaseClass:
