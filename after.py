@@ -1,6 +1,7 @@
 from helper import shout, InvalidCredentialsError, Scale
 from typing import Any
 
+
 def make_squares(n: int) -> list[int]:
     """Returns a list of square numbers up to `n ** 2`."""
     return [i ** 2 for i in range(n)]
@@ -77,6 +78,7 @@ def _extracted_from_extraction_example_2(label, arg1):
     speed_slider.pack()
     speed_slider.set(arg1)
     speed_slider.configure(background="white")
+
 
 # Custom Rules
 class ExampleBaseClass:
