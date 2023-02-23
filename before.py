@@ -1,5 +1,5 @@
 import random
-from helper import fetch_tracks, Playlist, change
+from helper import fetch_tracks, Playlist, change, shout
 
 
 def make_squares(n: int) -> list[int]:
@@ -83,6 +83,11 @@ def create_playlist(starting_tracks = []):
         track_list.append(track_selected)
 
     return Playlist(track_list)
+
+
+def shout_about_bowlers(hats: list[str]) -> None:
+    if any(hat == "bowler" for hat in hats):
+        shout("I have a bowler hat!")
 
 
 # Custom Rules

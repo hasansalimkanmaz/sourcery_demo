@@ -19,3 +19,7 @@ def fetch_tracks() -> typing.Iterator[Track]:
 
 def change(hat: list):
     assert hat
+
+
+def shout(message: str):
+    print(message)
